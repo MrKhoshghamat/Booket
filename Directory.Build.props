@@ -3,9 +3,9 @@
 	<PropertyGroup Label="NuspecSettings">
 		<Company>Maad</Company>
 		<Authors>$(Mohammadreza Khoshghamat)</Authors>
-		<Copyright>Copyright © $(Maad) $([System.DateTime]::Now.Year)</Copyright>
-		<Trademark>$(Maad)™</Trademark>
-		<Product>$(Maad) Projects</Product>
+		<Copyright>Copyright ï¿½ $(Booket) $([System.DateTime]::Now.Year)</Copyright>
+		<Trademark>$(Booket)ï¿½</Trademark>
+		<Product>$(Booket) Projects</Product>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -25,15 +25,4 @@
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 	</PropertyGroup>
 
-	<PropertyGroup Label="ConfigFiles">
-		<StyleCopFile Condition=" '$(StyleCopFile)' == '' ">$([MSBuild]::GetPathOfFileAbove('stylecop.json',
-			$(MSBuildProjectDirectory)))</StyleCopFile>
-		<EditorConfigFile Condition=" '$(EditorConfigFile)' == '' ">$([MSBuild]::GetPathOfFileAbove('.editorconfig',
-			$(MSBuildProjectDirectory)))</EditorConfigFile>
-	</PropertyGroup>
-
-	<ItemGroup Label="ConfigFiles">
-		<AdditionalFiles Condition="Exists('$(StyleCopFile)')" Include="$(StyleCopFile)" Visible="false" />
-		<None Condition="Exists('$(EditorConfigFile)')" Include="$(EditorConfigFile)" Visible="false" />
-	</ItemGroup>
 </Project>
