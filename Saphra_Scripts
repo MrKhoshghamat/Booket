@@ -1,0 +1,2570 @@
+USE [Saphra]
+GO
+/****** Object:  Schema [Approval]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [Approval]
+GO
+/****** Object:  Schema [BasicInfo]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [BasicInfo]
+GO
+/****** Object:  Schema [Core]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [Core]
+GO
+/****** Object:  Schema [Estelam]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [Estelam]
+GO
+/****** Object:  Schema [LimAuth]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [LimAuth]
+GO
+/****** Object:  Schema [Payment]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [Payment]
+GO
+/****** Object:  Schema [WebApi]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE SCHEMA [WebApi]
+GO
+/****** Object:  UserDefinedTableType [Core].[AdditionalInformationOrganizationTree]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE TYPE [Core].[AdditionalInformationOrganizationTree] AS TABLE(
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[OrganizationTreeId] [int] NOT NULL,
+	[MetadataId] [int] NOT NULL,
+	[Value] [nvarchar](100) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+)
+GO
+/****** Object:  UserDefinedTableType [Core].[OrganizationTree]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE TYPE [Core].[OrganizationTree] AS TABLE(
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[AutomaticOrganizationTreeId] [int] NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[EstablishmentLocationId] [int] NOT NULL,
+	[OrganizationType] [nvarchar](50) NULL,
+	[ParentOrganizationTreeId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+)
+GO
+/****** Object:  UserDefinedTableType [Core].[ruleSet_IdList]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE TYPE [Core].[ruleSet_IdList] AS TABLE(
+	[ID] [int] NULL
+)
+GO
+/****** Object:  UserDefinedTableType [LimAuth].[CreditPackagePillarAuthorityType]    Script Date: 2/5/2026 3:15:39 PM ******/
+CREATE TYPE [LimAuth].[CreditPackagePillarAuthorityType] AS TABLE(
+	[CreditPackageId] [int] NOT NULL,
+	[PillarGroupId] [int] NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[CustomerTypeId] [int] NOT NULL,
+	[Amount] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+)
+GO
+/****** Object:  Table [Approval].[AccountBalanceAverage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[AccountBalanceAverage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[PledgeGroupId] [int] NULL,
+	[Average] [bigint] NOT NULL,
+	[ContractLengthUnitId] [int] NOT NULL,
+	[MaxContractLength] [int] NOT NULL,
+	[Ratio] [decimal](18, 2) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[IsGroup] [bit] NULL,
+	[Year] [int] NOT NULL,
+	[Version] [int] NOT NULL,
+ CONSTRAINT [PK_AccountBalanceAverage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[AccountBalanceAverage_14040231]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[AccountBalanceAverage_14040231](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[PledgeGroupId] [int] NULL,
+	[Average] [bigint] NOT NULL,
+	[ContractLengthUnitId] [int] NOT NULL,
+	[MaxContractLength] [int] NOT NULL,
+	[Ratio] [decimal](18, 2) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[IsGroup] [bit] NULL,
+	[Year] [int] NOT NULL,
+	[Version] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[AccountBalanceAverage990528]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[AccountBalanceAverage990528](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[PledgeGroupId] [int] NULL,
+	[Average] [bigint] NOT NULL,
+	[ContractLengthUnitId] [int] NOT NULL,
+	[MaxContractLength] [int] NOT NULL,
+	[Ratio] [decimal](18, 2) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[AveragePercent]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[AveragePercent](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DepositDependentAverageId] [int] NOT NULL,
+	[BalanceAverageDuration] [int] NOT NULL,
+	[FacilityRepaymentDuration] [int] NULL,
+	[FacilityInterestPercent] [int] NULL,
+	[FacilityPercent] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_AveragePercent] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[DepositDependentAverage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[DepositDependentAverage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeDepositId] [int] NOT NULL,
+	[DepositInterestPercent] [int] NULL,
+	[MinDepositAmount] [bigint] NULL,
+	[ContractTypeId] [int] NULL,
+	[MaxFacilityAmount] [bigint] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_DepositDependentAverage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[DepositIndependentAverage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[DepositIndependentAverage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TypeDepositId] [int] NOT NULL,
+	[DepositInterestPercent] [int] NULL,
+	[MinDepositAmount] [bigint] NULL,
+	[ContractTypeId] [int] NULL,
+	[FacilityInterestPercent] [int] NULL,
+	[MaxFacilityAmount] [bigint] NULL,
+	[MaxRepaymentDuration] [int] NULL,
+	[FacilityPercent] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_DepositIndependentAverage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[DetermineAmountCeiling]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[DetermineAmountCeiling](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[CustomerTypeId] [int] NULL,
+	[ContractLengthUnitId] [int] NULL,
+	[MaxContractLength] [int] NULL,
+	[AmountCeiling] [bigint] NULL,
+	[PledgeGroupId] [int] NULL,
+	[MinPledgeAmount] [bigint] NULL,
+	[MaxPledgeAmount] [bigint] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_DetermineAmountCeiling] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Approval].[PledgeCash]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Approval].[PledgeCash](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[ContractTypeId] [int] NOT NULL,
+	[Ratio] [bigint] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PledgeCash] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [BasicInfo].[FlatOrganDatas]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [BasicInfo].[FlatOrganDatas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ApprovedOrganId] [int] NOT NULL,
+	[RegionCode] [int] NOT NULL,
+	[BranchCode] [int] NOT NULL,
+	[ParentId] [int] NOT NULL,
+	[SectionCode] [int] NULL,
+	[ZoneCode] [int] NULL,
+	[IsVirtual] [bit] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[CurrencyTypeId] [int] NULL,
+	[CurrencyTypeTitle] [nvarchar](max) NULL,
+	[OrganItemId] [int] NOT NULL,
+	[OrganItemTitle] [nvarchar](max) NULL,
+	[OrganTypeId] [int] NOT NULL,
+	[OrganTypeTitle] [nvarchar](max) NULL,
+	[DegreeId] [int] NULL,
+	[DegreeTitle] [nvarchar](max) NULL,
+	[CityCode] [nvarchar](max) NULL,
+	[CityTitle] [nvarchar](max) NULL,
+	[ProvinceCode] [nvarchar](max) NULL,
+	[ProvinceTitle] [nvarchar](max) NULL,
+ CONSTRAINT [PK_BasicInfo.FlatOrganDatas] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[AccountType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[AccountType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[AccountTypeNo] [varchar](3) NULL,
+	[CurrencyType] [varchar](3) NULL,
+	[SubType] [varchar](3) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_AccountType_New] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[AccountType_14020420]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[AccountType_14020420](
+	[Id] [nvarchar](255) NULL,
+	[Code] [nvarchar](255) NULL,
+	[Title] [nvarchar](255) NULL,
+	[AccountTypeNo] [float] NULL,
+	[CurrencyType] [float] NULL,
+	[subtype] [float] NULL,
+	[IsDeleted] [float] NULL,
+	[ModifiedWhen] [nvarchar](255) NULL,
+	[ModifiedBy] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[AccountType_backup_13971214]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[AccountType_backup_13971214](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[AccountTypeNo] [varchar](3) NULL,
+	[CurrencyType] [varchar](3) NULL,
+	[SubType] [varchar](3) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[AccountType_Old]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[AccountType_Old](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[AccountTypeNo] [varchar](3) NULL,
+	[CurrencyType] [varchar](3) NULL,
+	[SubType] [varchar](3) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_AccountType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[ApprovalType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[ApprovalType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[TypeOfConnectionWithApprovalsId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_ApprovalPositionType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[BasicInformation]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[BasicInformation](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[CategoryId] [int] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK__BasicInf__3214EC072F709583] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[BasicInformationCategory]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[BasicInformationCategory](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[IsEditable] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[TypeName] [varchar](500) NOT NULL,
+ CONSTRAINT [PK__BasicInf__3214EC0750BA7F2F] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[ContractType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[ContractType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[ContractNatureId] [int] NOT NULL,
+	[RefundTypeId] [int] NOT NULL,
+	[CurrencyGroupTypeId] [int] NOT NULL,
+	[ContractTemplateId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_ContractType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[ContractTypeConsumptionCases]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[ContractTypeConsumptionCases](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ContractTypeId] [int] NOT NULL,
+	[ConsumptionCasesId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_ContractTypeConsumptionCases] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[ContractTypeContractGroup]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[ContractTypeContractGroup](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ContractTypeId] [int] NOT NULL,
+	[ContractGroupId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_ContractTypeContractGroup] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[ContractTypeContractSubType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[ContractTypeContractSubType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ContractTypeId] [int] NOT NULL,
+	[ContractSubTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_ContractType_ContractSubType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[CreditSupplyResourcesInternalSourceType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[CreditSupplyResourcesInternalSourceType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CreditSupplyResourcesTypeId] [int] NOT NULL,
+	[InternalSourceTypeId] [int] NULL,
+ CONSTRAINT [PK_CreditSupplyResourcesInternalSourceType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[CreditSupplyResourcesType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[CreditSupplyResourcesType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_CreditSupplySource] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[DetermineFacilityMoein]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[DetermineFacilityMoein](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[MoeinCode] [varchar](10) NULL,
+	[ContractTypeId] [int] NULL,
+	[ConsumptionCasesId] [int] NULL,
+	[PortionTypeId] [int] NULL,
+	[SubPortionTypeId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[FacilitySubTypeCode] [bigint] NOT NULL,
+	[FacilitySubTypeTitle] [nvarchar](100) NULL,
+	[EligibleId] [int] NULL,
+	[FacilitySubjectId] [int] NULL,
+	[ContractSubTypeId] [int] NULL,
+	[CreditSupplyResourcesTypeId] [int] NULL,
+	[InternalSourceTypeId] [int] NULL,
+ CONSTRAINT [PK_DetermineFacilityMoein] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[DetermineFacilityMoeinPaymentType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[DetermineFacilityMoeinPaymentType](
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[PaymentTypeId] [int] NOT NULL,
+	[IsInheritedFromParent] [bit] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[DetermineFacilityMoeinResource]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[DetermineFacilityMoeinResource](
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[PlaceOfCreditId] [int] NOT NULL,
+	[IsInheritedFromParent] [bit] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[EstablishmentLocation]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[EstablishmentLocation](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[ColorCode] [nvarchar](50) NOT NULL,
+	[Priority] [tinyint] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[Selectable] [bit] NOT NULL,
+ CONSTRAINT [PK_EstablishmentLocation] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [IX_EstablishmentLocation] UNIQUE NONCLUSTERED 
+(
+	[Title] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY],
+ CONSTRAINT [IX_EstablishmentLocation_1] UNIQUE NONCLUSTERED 
+(
+	[Priority] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[FacilitySubTypeInterface]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[FacilitySubTypeInterface](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[Code] [int] NOT NULL,
+	[Title] [varchar](100) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_FacilitySubTypeInterface] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[InternalSourceType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[InternalSourceType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[CreditSupplyResourcesTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_FundingLocationType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[Job]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[Job](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](200) NOT NULL,
+	[JobCode] [varchar](10) NULL,
+	[CategoryId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Job] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[JobCategory]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[JobCategory](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](200) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_JobCategory] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[OrganizationTree]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[OrganizationTree](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[AutomaticOrganizationTreeId] [int] NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[EstablishmentLocationId] [int] NOT NULL,
+	[OrganizationType] [nvarchar](50) NULL,
+	[ParentOrganizationTreeId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_OrganizationTree] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[OrganizationTreeAdditionalInformation]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[OrganizationTreeAdditionalInformation](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[OrganizationTreeId] [int] NOT NULL,
+	[MetadataId] [int] NOT NULL,
+	[Value] [nvarchar](100) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_AdditionalInformation] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[OrganizationTreeMetadata]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[OrganizationTreeMetadata](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[EnTitle] [nvarchar](100) NOT NULL,
+	[FaTitle] [nvarchar](100) NOT NULL,
+	[EstablishmentLocationId] [int] NOT NULL,
+	[Type] [nvarchar](30) NOT NULL,
+	[IsMandatory] [bit] NOT NULL,
+	[UseInExpression] [bit] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_MetadataTable] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarGroup]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarGroup](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[CriteriaModel] [nvarchar](max) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarGroup] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarGroupDetail]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarGroupDetail](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[PillarGroupId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarGroupDetail] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[ParentId] [int] NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[EstablishmentLocationId] [int] NOT NULL,
+	[DuplicateBranch] [bit] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarTypeAmountPeriod]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarTypeAmountPeriod](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CeilingAmount] [numeric](18, 0) NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarTypeAmountPeriod] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarTypeHistory]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarTypeHistory](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[ParentId] [int] NULL,
+	[PillarTypeTitle] [nvarchar](100) NOT NULL,
+	[EstablishmentLocationId] [int] NOT NULL,
+	[DuplicateBranch] [bit] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarTypeHistory] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarTypeMember]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarTypeMember](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[JobCode] [varchar](10) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarTypeMember] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PillarTypePaymentPeriod]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PillarTypePaymentPeriod](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CeilingPaymentPeriod] [int] NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[PaymentTypeId] [int] NULL,
+	[InstallmentsPeriod] [int] NULL,
+ CONSTRAINT [PK_PillarTypePaymentPeriod] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PlaceOfCredit]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PlaceOfCredit](
+	[Id] [int] NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](50) NOT NULL,
+	[PlaceOfCreditInternalId] [int] NULL,
+ CONSTRAINT [PK_PlaceOfCredit] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PlaceOfCreditInternal]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PlaceOfCreditInternal](
+	[Id] [int] NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PlaceOfCreditInternal] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PledgeCoveragePercentage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PledgeCoveragePercentage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DetermineFacilityId] [int] NOT NULL,
+	[Percentage] [decimal](8, 2) NOT NULL,
+	[PledgeTypeId] [int] NOT NULL,
+	[AccountTypeId] [int] NULL,
+	[CommitmentAmountId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+ CONSTRAINT [PK__PledgeCo__3214EC0753272CE4] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PledgeGroup]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PledgeGroup](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[Priority] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NULL,
+	[ModifiedBy] [nvarchar](100) NULL,
+ CONSTRAINT [PK_PledgeGroup] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PledgeGroup_Backup_14040615]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PledgeGroup_Backup_14040615](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[Priority] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NULL,
+	[ModifiedBy] [nvarchar](100) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PledgeGroupPledgeType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PledgeGroupPledgeType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[PledgeTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PledgeGroupPledgeType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PledgeType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PledgeType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](500) NULL,
+	[HypothecationId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[QueryableRemainedAmount] [bit] NULL,
+	[Insurable] [bit] NULL,
+	[HasAccount] [bit] NULL,
+	[WorthinessDegree] [int] NOT NULL,
+	[WorthinessSubDegree] [int] NOT NULL,
+ CONSTRAINT [PK_PledgeType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PledgeType_Backup_14040615]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PledgeType_Backup_14040615](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[HypothecationId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[QueryableRemainedAmount] [bit] NULL,
+	[Insurable] [bit] NULL,
+	[HasAccount] [bit] NULL,
+	[WorthinessDegree] [int] NOT NULL,
+	[WorthinessSubDegree] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[PortionTypeSubPortionType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[PortionTypeSubPortionType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PortionTypeId] [int] NOT NULL,
+	[SubPortionTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PortionTypeSubPortionType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[RuleSet]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[RuleSet](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[TriggerName] [nvarchar](50) NULL,
+	[Key] [nvarchar](100) NOT NULL,
+	[Type] [nvarchar](200) NULL,
+	[Priority] [int] NOT NULL,
+	[RuleExecutePosition] [int] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NULL,
+	[ModifiedBy] [nvarchar](100) NULL,
+	[Caption] [nvarchar](100) NULL,
+ CONSTRAINT [PK_RuleSets] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[RuleSetCreditPackage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[RuleSetCreditPackage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RuleSetId] [int] NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[Priority] [int] NOT NULL,
+	[CreateBy] [int] NULL,
+	[CreateDate] [datetime] NULL,
+ CONSTRAINT [PK_RuleSetCreditPackages] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[SpecialCustomer]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[SpecialCustomer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerNumber] [varchar](50) NOT NULL,
+	[CustomerTitle] [nvarchar](100) NOT NULL,
+	[CustomerTypeId] [int] NOT NULL,
+	[ApplicantOwnershipTypeId] [int] NULL,
+	[Dependent] [bit] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_SpecialCustomer] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Core].[TypeOfConnectionWithApprovals]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Core].[TypeOfConnectionWithApprovals](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_TypeOfConnectionWithApprovals] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_AccType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_AccType](
+	[Id] [int] NOT NULL,
+	[Title] [nvarchar](255) NULL,
+	[AccTypeNo] [float] NULL,
+	[CurrencyType] [float] NULL,
+	[SubType] [float] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_Combination]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_Combination](
+	[title] [nvarchar](255) NULL,
+	[PortionId] [int] NULL,
+	[SubPortionId] [int] NULL,
+	[ConsumptionCasesId] [int] NULL,
+	[MoeinCode] [varchar](10) NULL,
+	[ContractTypeId] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_ConsumptionCases]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_ConsumptionCases](
+	[ID] [float] NULL,
+	[Title] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_JobCodes]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_JobCodes](
+	[JOBCODE] [float] NULL,
+	[JOBTITLE] [nvarchar](255) NULL,
+	[JobeType] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_Organ]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_Organ](
+	[ApprovedOrganId] [float] NULL,
+	[BranchCode] [float] NULL,
+	[RegionCode] [float] NULL,
+	[ZoneCode] [float] NULL,
+	[ParentId] [float] NULL,
+	[Title] [nvarchar](255) NULL,
+	[OrganItemId] [float] NULL,
+	[OrganTypeId] [float] NULL,
+	[DegreeId] [float] NULL,
+	[Level] [float] NULL,
+	[Removeable] [float] NULL,
+	[DegreeTitle] [nvarchar](255) NULL,
+	[SelfGoverning] [bit] NULL,
+	[CurrencyType] [bit] NULL,
+	[IsActive] [bit] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_Organ_old]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_Organ_old](
+	[ApprovedOrganId] [float] NULL,
+	[BranchCode] [float] NULL,
+	[RegionCode] [float] NULL,
+	[ZoneCode] [float] NULL,
+	[ParentId] [float] NULL,
+	[Title] [nvarchar](255) NULL,
+	[OrganItemId] [float] NULL,
+	[OrganTypeId] [float] NULL,
+	[DegreeId] [float] NULL,
+	[Level] [float] NULL,
+	[Removeable] [float] NULL,
+	[DegreeTitle] [nvarchar](255) NULL,
+	[SelfGoverning] [bit] NULL,
+	[CurrencyType] [bit] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_Organ_old_990910]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_Organ_old_990910](
+	[ApprovedOrganId] [float] NULL,
+	[BranchCode] [float] NULL,
+	[RegionCode] [float] NULL,
+	[ZoneCode] [float] NULL,
+	[ParentId] [float] NULL,
+	[Title] [nvarchar](255) NULL,
+	[OrganItemId] [float] NULL,
+	[OrganTypeId] [float] NULL,
+	[DegreeId] [float] NULL,
+	[Level] [float] NULL,
+	[Removeable] [float] NULL,
+	[DegreeTitle] [nvarchar](255) NULL,
+	[SelfGoverning] [bit] NULL,
+	[CurrencyType] [bit] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_Portion]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_Portion](
+	[ID] [float] NULL,
+	[Title] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[_SubPortion]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[_SubPortion](
+	[ID] [float] NULL,
+	[PortionID] [float] NULL,
+	[Title] [varchar](200) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Agreement]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Agreement](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProclamationId] [int] NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[AgreementNumber] [nvarchar](50) NULL,
+	[AgreementDate] [datetime] NULL,
+	[AgreementDuration] [int] NOT NULL,
+	[TimeUnitId] [int] NOT NULL,
+	[AgreementAmount] [money] NOT NULL,
+	[CurrencyUnitId] [int] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[dboNumberForCore] [bigint] NULL,
+	[SourceAgreementId] [int] NULL,
+	[AgreementStatusId] [int] NULL,
+	[AgreementDueDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Agreement] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Core.PledgeCoveragePercentage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Core.PledgeCoveragePercentage](
+	[Id] [int] NOT NULL,
+	[DetermineFacilityId] [int] NOT NULL,
+	[Percentage] [float] NOT NULL,
+	[PledgeTypeId] [int] NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[CommitmentAmountId] [int] NOT NULL,
+ CONSTRAINT [PK_Core.PledgeCoveragePercentage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[CreditPackageDetermineFacility]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[CreditPackageDetermineFacility](
+	[CreditPackageId] [float] NULL,
+	[DetermineFacilityMoeinId] [float] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Deposit_Import]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Deposit_Import](
+	[fld_kindSubAcc_kindAcc] [nvarchar](255) NULL,
+	[fld_AccType] [nvarchar](255) NULL,
+	[fld_kindSubAcc_kindsubAcc] [nvarchar](255) NULL,
+	[fld_kindSubAcc_descSubAcc] [nvarchar](255) NULL,
+	[fld_ArziRiali] [nvarchar](255) NULL,
+	[fld_Kol] [nvarchar](255) NULL,
+	[fld_sepordehGhanoniUpTo_13930419] [nvarchar](255) NULL,
+	[fld_sepordehGhanoniUpTo_13931229] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[DetermineFacilityMoein990605]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[DetermineFacilityMoein990605](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[MoeinCode] [varchar](10) NULL,
+	[ContractTypeId] [int] NULL,
+	[ConsumptionCasesId] [int] NULL,
+	[PortionTypeId] [int] NULL,
+	[SubPortionTypeId] [int] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[FacilitySubTypeCode] [bigint] NOT NULL,
+	[FacilitySubTypeTitle] [nvarchar](100) NULL,
+	[EligibleId] [int] NULL,
+	[FacilitySubjectId] [int] NULL,
+	[ContractSubTypeId] [int] NULL,
+	[CreditSupplyResourcesTypeId] [int] NULL,
+	[InternalSourceTypeId] [int] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrganizationTree_1]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrganizationTree_1](
+	[Id] [float] NULL,
+	[AutomaticOrganizationTreeId] [float] NULL,
+	[Title] [nvarchar](max) NULL,
+	[EstablishmentLocationId] [float] NULL,
+	[OrganizationType] [nvarchar](max) NULL,
+	[ParentOrganizationTreeId] [float] NULL,
+	[IsDeleted] [float] NULL,
+	[ModifiedWhen] [nvarchar](255) NULL,
+	[ModifiedBy] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[OrganizationTreeAdditionalInformation_1]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[OrganizationTreeAdditionalInformation_1](
+	[Id] [float] NULL,
+	[OrganizationTreeId] [float] NULL,
+	[MetadataId] [float] NULL,
+	[Value] [nvarchar](max) NULL,
+	[IsDeleted] [float] NULL,
+	[ModifiedWhen] [nvarchar](255) NULL,
+	[ModifiedBy] [nvarchar](max) NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PillarGroup990612]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PillarGroup990612](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[CriteriaModel] [nvarchar](max) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PillarGroup990631]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PillarGroup990631](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[Title] [nvarchar](100) NOT NULL,
+	[CriteriaModel] [nvarchar](max) NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[PillarGroupDetail990612]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[PillarGroupDetail990612](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[PillarGroupId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sample]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sample](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_Sample] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sample2]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sample2](
+	[ID] [uniqueidentifier] NOT NULL,
+	[Name] [varchar](40) NOT NULL,
+ CONSTRAINT [PK__Sample2__3214EC27C7EA20E6] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Sheet1$]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Sheet1$](
+	[Code] [float] NULL,
+	[Title] [nvarchar](255) NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tempCreditPackagePillarAuthority]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tempCreditPackagePillarAuthority](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[PillarGroupId] [int] NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[CustomerTypeId] [int] NOT NULL,
+	[Amount] [decimal](18, 2) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[tempData]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[tempData](
+	[Title] [nvarchar](255) NULL,
+	[AccTypeNo] [float] NULL,
+	[CurrencyType] [float] NULL,
+	[SubType] [float] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[testSheet$]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[testSheet$](
+	[Code] [float] NULL,
+	[Title] [nvarchar](255) NULL,
+	[ContractCode] [float] NULL,
+	[SubContractCode] [nvarchar](255) NULL,
+	[Portion] [float] NULL,
+	[SubPortion] [nvarchar](255) NULL,
+	[ConsumptionCode] [nvarchar](255) NULL,
+	[tabsare] [nvarchar](255) NULL,
+	[dolati] [nvarchar](255) NULL,
+	[faal] [nvarchar](255) NULL,
+	[Moein] [float] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[BlackList]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[BlackList](
+	[Id] [bigint] IDENTITY(1,1) NOT NULL,
+	[NationalCode] [nvarchar](200) NULL,
+ CONSTRAINT [PK_BlackList] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackage](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[DateOfRelease] [datetime] NOT NULL,
+	[ExpirationDate] [datetime] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ReasonTypeId] [int] NOT NULL,
+	[IdentificationCode] [uniqueidentifier] NULL,
+	[CurrencyUnitId] [int] NULL,
+	[CurrencyTypeId] [int] NULL,
+	[GroupingId] [int] NULL,
+ CONSTRAINT [PK_CreditPackage] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackage13990430]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackage13990430](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Title] [nvarchar](max) NOT NULL,
+	[DateOfRelease] [datetime] NOT NULL,
+	[ExpirationDate] [datetime] NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ReasonTypeId] [int] NOT NULL,
+	[IdentificationCode] [uniqueidentifier] NULL,
+	[CurrencyUnitId] [int] NULL,
+	[CurrencyTypeId] [int] NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageApplicantOwnershipType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageApplicantOwnershipType](
+	[ApplicantOwnershipTypeId] [int] NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageContractLengthGroup]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageContractLengthGroup](
+	[ContractLengthGroupId] [int] NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageContractSubType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageContractSubType](
+	[ContractSubTypeId] [int] NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageContractType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageContractType](
+	[ContractTypeId] [int] NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageCurrencyGroupType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageCurrencyGroupType](
+	[CurrencyGroupTypeId] [int] NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageDetermineFacilityMoein]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageDetermineFacilityMoein](
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackageLocationOfMortgage]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackageLocationOfMortgage](
+	[CreditPackageId] [int] NOT NULL,
+	[LocationOfMortgageId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackagePayType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackagePayType](
+	[CreditPackageId] [int] NOT NULL,
+	[PayTypeId] [int] NOT NULL,
+	[ModifiedWhen] [datetime] NOT NULL,
+	[ModifiedBy] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackagePillarAuthority]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackagePillarAuthority](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[PillarGroupId] [int] NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[CustomerTypeId] [int] NOT NULL,
+	[Amount] [decimal](18, 2) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_CreaditPackagePillarAuthority] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[CreditPackagePillarAuthority13990430]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[CreditPackagePillarAuthority13990430](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CreditPackageId] [int] NOT NULL,
+	[PillarGroupId] [int] NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[CustomerTypeId] [int] NOT NULL,
+	[Amount] [decimal](18, 2) NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[DeterminationByPledge]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[DeterminationByPledge](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[CustomerTypeId] [int] NOT NULL,
+	[AmountOfBackingFrom] [bigint] NOT NULL,
+	[AmountOfBackingTo] [bigint] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_DeterminationOfPledge] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[ExceptionLog]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[ExceptionLog](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[InnerException] [nvarchar](max) NULL,
+	[Message] [nvarchar](max) NULL,
+	[ServiceName] [nvarchar](50) NULL,
+	[CreateDate] [datetime2](7) NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[InformationLog]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[InformationLog](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ServiceName] [nvarchar](50) NULL,
+	[Params] [nvarchar](max) NULL,
+	[CreateDate] [datetime2](7) NOT NULL,
+	[Result] [nvarchar](max) NULL,
+ CONSTRAINT [PK_InformationLog] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[PillarTypeAmountPeriod]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[PillarTypeAmountPeriod](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CeilingAmount] [numeric](18, 0) NOT NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+ CONSTRAINT [PK_PillarTypeAmountPeriod] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[PillarTypePaymentPeriod]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[PillarTypePaymentPeriod](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CeilingPaymentPeriod] [int] NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[PaymentTypeId] [int] NULL,
+	[InstallmentsPeriod] [int] NULL,
+	[IsDisabled] [bit] NULL,
+	[IsCashPledge] [bit] NULL,
+	[IsAssetPledge] [bit] NULL,
+	[IsOtherPledge] [bit] NULL,
+	[CashPledgePercentage] [float] NULL,
+	[AssetPledgePercentage] [float] NULL,
+	[OtherPledgePercentage] [float] NULL,
+	[MinAmount] [bigint] NULL,
+	[MaxAmount] [bigint] NULL,
+ CONSTRAINT [PK_PillarTypePaymentPeriod] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[PillarTypePaymentPeriod990528]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[PillarTypePaymentPeriod990528](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CeilingPaymentPeriod] [int] NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[PaymentTypeId] [int] NULL,
+	[InstallmentsPeriod] [int] NULL,
+	[IsDisabled] [bit] NULL,
+	[IsCashPledge] [bit] NULL,
+	[IsAssetPledge] [bit] NULL,
+	[IsOtherPledge] [bit] NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[PillarTypePaymentPeriodHistory]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[PillarTypePaymentPeriodHistory](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PillarTypePaymentPeriodId] [int] NOT NULL,
+	[Code] [nvarchar](50) NULL,
+	[DetermineFacilityMoeinId] [int] NOT NULL,
+	[CeilingPaymentPeriod] [int] NULL,
+	[PillarTypeId] [int] NOT NULL,
+	[IsDeleted] [bit] NOT NULL,
+	[ModifiedWhen] [datetime2](2) NOT NULL,
+	[ModifiedBy] [nvarchar](100) NOT NULL,
+	[PaymentTypeId] [int] NULL,
+	[InstallmentsPeriod] [int] NULL,
+	[PledgeGroupId] [int] NULL,
+	[IsDisabled] [bit] NULL,
+ CONSTRAINT [PK_PillarTypePaymentPeriodHistory] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [LimAuth].[ReasonType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [LimAuth].[ReasonType](
+	[Id] [int] NOT NULL,
+	[Title] [nvarchar](50) NOT NULL,
+ CONSTRAINT [PK_ReasonType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Account]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Account](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[AccountNumber] [bigint] NOT NULL,
+	[BalanceInquiryDate] [datetime] NOT NULL,
+	[AverageBalance] [bigint] NULL,
+	[AverageMonthQuantity] [int] NULL,
+	[CurrentBalance] [bigint] NULL,
+	[CurrencyTypeId] [int] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[CreatedBy] [varchar](50) NOT NULL,
+	[AccountTypeId] [int] NOT NULL,
+	[OpeningDate] [datetime] NOT NULL,
+	[ProclamationId] [int] NOT NULL,
+	[BankId] [int] NOT NULL,
+ CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Agreement]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Agreement](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProclamationId] [int] NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[AgreementNumber] [nvarchar](50) NULL,
+	[AgreementDate] [datetime] NULL,
+	[AgreementDuration] [int] NOT NULL,
+	[TimeUnitId] [int] NOT NULL,
+	[AgreementAmount] [money] NOT NULL,
+	[CurrencyUnitId] [int] NOT NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[PaymentNumberForCore] [bigint] NULL,
+	[SourceAgreementId] [int] NULL,
+	[AgreementStatusId] [int] NULL,
+	[AgreementDueDate] [datetime] NOT NULL,
+ CONSTRAINT [PK_Agreement] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[ApprovedPledge]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[ApprovedPledge](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[PledgeGroupId] [int] NOT NULL,
+	[PledgeTypeId] [int] NOT NULL,
+	[CurrencyUnitId] [int] NOT NULL,
+	[ProclamationId] [int] NOT NULL,
+	[CoveragePercentage] [float] NOT NULL,
+	[TotalCoverageAmount] [money] NOT NULL,
+ CONSTRAINT [PK_ApprovedPledge] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Comment]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Comment](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[ProclamationId] [int] NULL,
+	[AgreementId] [int] NULL,
+	[CommentTypeId] [int] NOT NULL,
+	[CommentDescription] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_PaymentPermissionComment] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[CommentType]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[CommentType](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CommentTypeTitle] [varchar](50) NOT NULL,
+ CONSTRAINT [PK_CommentType] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Customer]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Customer](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerEntityId] [int] NOT NULL,
+	[CustomerNumber] [bigint] NOT NULL,
+	[FullName] [nvarchar](255) NOT NULL,
+	[NationalCode] [bigint] NULL,
+	[CustomerTypeId] [int] NULL,
+	[BirthDate] [datetime] NULL,
+	[MainAddress] [nvarchar](max) NULL,
+	[PhoneFaxNumber] [varchar](50) NULL,
+	[MobileNumber] [varchar](max) NULL,
+	[OwnershipTypeId] [int] NULL,
+	[CreatedDate] [datetime] NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[IsBankCustomer] [bit] NOT NULL,
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Guarantee]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Guarantee](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[PledgeTypeId] [int] NOT NULL,
+	[GuaranteeUniqueNumber] [bigint] NOT NULL,
+	[RemainedAmount] [money] NOT NULL,
+	[InquiryDate] [datetime] NOT NULL,
+	[ValidationDate] [datetime] NULL,
+	[CreatedDate] [datetime] NOT NULL,
+	[CreatedBy] [varchar](50) NULL,
+	[GuaranteeStatusId] [int] NULL,
+	[TotalValue] [money] NOT NULL,
+ CONSTRAINT [PK_Guarantee] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Proclamation]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Proclamation](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[CustomerId] [int] NOT NULL,
+	[ProclamationStatusId] [int] NULL,
+	[ContractTypeId] [int] NOT NULL,
+	[ContractSubTypeId] [int] NOT NULL,
+	[ApprovedPillarTypeId] [int] NOT NULL,
+	[ApprovedOrganizationTreeId] [int] NULL,
+	[PaymentMethodId] [int] NOT NULL,
+	[PaymentTypeId] [int] NOT NULL,
+	[CreditSupplyResourcesTypeId] [int] NOT NULL,
+	[ApprovalTypeId] [int] NULL,
+	[BranchProposalDate] [datetime] NOT NULL,
+	[ApprovalNumber] [varchar](50) NOT NULL,
+	[ApprovalDate] [datetime] NOT NULL,
+	[ApprovalExpirationDate] [datetime] NOT NULL,
+	[IsMultiPerson] [bit] NOT NULL,
+	[AllowableContractQuantity] [int] NULL,
+	[ContractDurationInApproval] [int] NOT NULL,
+	[ContractLengthUnitId] [int] NOT NULL,
+	[InstallmentMonthInterval] [int] NULL,
+	[ApprovedAmount] [money] NOT NULL,
+	[CurrencyTypeId] [int] NOT NULL,
+	[BankCashShareAmount] [money] NULL,
+	[CustomerCashShareAmount] [money] NULL,
+	[CustomerNonCashAmount] [money] NULL,
+	[BankProfitRate] [float] NOT NULL,
+	[GovernmentProfitRate] [float] NOT NULL,
+	[ObligationRate] [float] NULL,
+	[ApplicantOwnershipTypeId] [int] NULL,
+	[ApprovalDeadLine] [datetime] NULL,
+	[CreatedDate] [datetime] NULL,
+	[CreatedBy] [varchar](50) NULL,
+ CONSTRAINT [PK_PaymentPermission] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[RelatedRoles]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[RelatedRoles](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[LastInquiryDate] [datetime] NOT NULL,
+	[RelatedEntityId] [int] NOT NULL,
+	[RoleTypeId] [int] NOT NULL,
+	[CustomerID] [int] NOT NULL,
+	[IsActive] [bit] NULL,
+ CONSTRAINT [PK_RelatedRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [Payment].[Status]    Script Date: 2/5/2026 3:15:39 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [Payment].[Status](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[StatusTitle] [varchar](50) NOT NULL
+) ON [PRIMARY]
+GO
+ALTER TABLE [Approval].[AccountBalanceAverage] ADD  CONSTRAINT [DF_AverageInventory_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Approval].[AveragePercent] ADD  CONSTRAINT [DF_AveragePercent_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Approval].[DepositDependentAverage] ADD  CONSTRAINT [DF_DepositDependentAverage_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Approval].[DepositIndependentAverage] ADD  CONSTRAINT [DF_DepositIndependentAverage_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Approval].[DetermineAmountCeiling] ADD  CONSTRAINT [DF_DetermineAmountCeiling_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Approval].[PledgeCash] ADD  CONSTRAINT [DF_PledgeCash_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Approval].[PledgeCash] ADD  CONSTRAINT [DF_PledgeCash_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[AccountType] ADD  CONSTRAINT [DF_AccountType_ModifiedBy_NEW]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[AccountType_Old] ADD  CONSTRAINT [DF_AccountType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[ApprovalType] ADD  CONSTRAINT [DF_ApprovalPositionType_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[ApprovalType] ADD  CONSTRAINT [DF_ApprovalPositionType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[BasicInformation] ADD  CONSTRAINT [DF_BasicInformation_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[ContractType] ADD  CONSTRAINT [DF_ContractType_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[ContractType] ADD  CONSTRAINT [DF_ContractType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[ContractTypeConsumptionCases] ADD  CONSTRAINT [DF_ContractTypeConsumptionCases_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[ContractTypeConsumptionCases] ADD  CONSTRAINT [DF_ContractTypeConsumptionCases_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[ContractTypeContractGroup] ADD  CONSTRAINT [DF_ContractTypeContractGroup_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[ContractTypeContractGroup] ADD  CONSTRAINT [DF_Table1_ModifiedBy1]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[ContractTypeContractSubType] ADD  CONSTRAINT [DF_ContractTypeContractSubType_IsActive]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[ContractTypeContractSubType] ADD  CONSTRAINT [DF_ContractType_ContractSubType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[CreditSupplyResourcesType] ADD  CONSTRAINT [DF_CreditSupplySource_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[CreditSupplyResourcesType] ADD  CONSTRAINT [DF_CreditSupplySource_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] ADD  CONSTRAINT [DF_DetermineFacilityMoein_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[EstablishmentLocation] ADD  CONSTRAINT [DF_EstablishmentLocation_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[EstablishmentLocation] ADD  CONSTRAINT [DF_EstablishmentLocation_Selectable]  DEFAULT ((0)) FOR [Selectable]
+GO
+ALTER TABLE [Core].[FacilitySubTypeInterface] ADD  CONSTRAINT [DF_FacilitySubTypeInterface_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[InternalSourceType] ADD  CONSTRAINT [DF_FundingLocationType_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[InternalSourceType] ADD  CONSTRAINT [DF_FundingLocationType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[Job] ADD  CONSTRAINT [DF_Job_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[JobCategory] ADD  CONSTRAINT [DF_JobCategory_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[OrganizationTree] ADD  CONSTRAINT [DF_OrganizationTree_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[OrganizationTree] ADD  CONSTRAINT [DF_OrganizationTree_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[OrganizationTreeAdditionalInformation] ADD  CONSTRAINT [DF_AdditionalInformation_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[OrganizationTreeAdditionalInformation] ADD  CONSTRAINT [DF_AdditionalInformation_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[OrganizationTreeMetadata] ADD  CONSTRAINT [DF_Metadata_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[OrganizationTreeMetadata] ADD  CONSTRAINT [DF_Metadata_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarGroup] ADD  CONSTRAINT [DF_PillarGroup_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarGroupDetail] ADD  CONSTRAINT [DF_PillarGroupDetail_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarType] ADD  CONSTRAINT [DF_PillarType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarTypeAmountPeriod] ADD  CONSTRAINT [DF_AmountOfPillarType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarTypeHistory] ADD  CONSTRAINT [DF_PillarTypeHistory_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[PillarTypeHistory] ADD  CONSTRAINT [DF_PillarTypeHistory_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarTypeMember] ADD  CONSTRAINT [DF_PillarTypeMember_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod] ADD  CONSTRAINT [DF_PillarTypePaymentPeriod_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PledgeGroup] ADD  CONSTRAINT [DF_PledgeGroup_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PledgeGroupPledgeType] ADD  CONSTRAINT [DF_PledgeGroupPledgeType_IsActive]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[PledgeGroupPledgeType] ADD  CONSTRAINT [DF_PledgeGroupPledgeType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PledgeType] ADD  CONSTRAINT [DF_PledgeType_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[PledgeType] ADD  CONSTRAINT [DF_PledgeType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[PledgeType] ADD  CONSTRAINT [DF__PledgeTyp__Worth__1471E42F]  DEFAULT ((4)) FOR [WorthinessDegree]
+GO
+ALTER TABLE [Core].[PledgeType] ADD  CONSTRAINT [DF__PledgeTyp__Worth__15660868]  DEFAULT ((4)) FOR [WorthinessSubDegree]
+GO
+ALTER TABLE [Core].[PortionTypeSubPortionType] ADD  CONSTRAINT [DF_PortionTypeSubPortionType_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[PortionTypeSubPortionType] ADD  CONSTRAINT [DF_PortionTypeSubPortionType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[SpecialCustomer] ADD  CONSTRAINT [DF_SpecialCustomer_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Core].[TypeOfConnectionWithApprovals] ADD  CONSTRAINT [DF_TypeOfConnectionWithApprovals_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [Core].[TypeOfConnectionWithApprovals] ADD  CONSTRAINT [DF_TypeOfConnectionWithApprovals_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [LimAuth].[CreditPackage] ADD  CONSTRAINT [DF_CreditPackage_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [LimAuth].[CreditPackagePillarAuthority] ADD  CONSTRAINT [DF_CreditPackagePillarAuthority_IsDeleted]  DEFAULT ((0)) FOR [IsDeleted]
+GO
+ALTER TABLE [LimAuth].[CreditPackagePillarAuthority] ADD  CONSTRAINT [DF_CreaditPackagePillarAuthority_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [LimAuth].[DeterminationByPledge] ADD  CONSTRAINT [DF_DeterminationOfPledge_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [LimAuth].[PillarTypeAmountPeriod] ADD  CONSTRAINT [DF_AmountOfPillarType_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [LimAuth].[PillarTypePaymentPeriod] ADD  CONSTRAINT [DF_PillarTypePaymentPeriod_ModifiedBy]  DEFAULT (N'system') FOR [ModifiedBy]
+GO
+ALTER TABLE [Payment].[Customer] ADD  CONSTRAINT [DF_Customer_IsBankCustomer]  DEFAULT ((1)) FOR [IsBankCustomer]
+GO
+ALTER TABLE [Payment].[Proclamation] ADD  CONSTRAINT [DF_Proclamation_IsMultiPerson]  DEFAULT ((0)) FOR [IsMultiPerson]
+GO
+ALTER TABLE [Approval].[AveragePercent]  WITH CHECK ADD  CONSTRAINT [FK_AveragePercent_DepositDependentAverage] FOREIGN KEY([DepositDependentAverageId])
+REFERENCES [Approval].[DepositDependentAverage] ([Id])
+GO
+ALTER TABLE [Approval].[AveragePercent] CHECK CONSTRAINT [FK_AveragePercent_DepositDependentAverage]
+GO
+ALTER TABLE [Approval].[DepositDependentAverage]  WITH CHECK ADD  CONSTRAINT [FK_DepositDependentAverage_BasicInformation] FOREIGN KEY([TypeDepositId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Approval].[DepositDependentAverage] CHECK CONSTRAINT [FK_DepositDependentAverage_BasicInformation]
+GO
+ALTER TABLE [Approval].[DepositDependentAverage]  WITH CHECK ADD  CONSTRAINT [FK_DepositDependentAverage_ContractType] FOREIGN KEY([ContractTypeId])
+REFERENCES [Core].[ContractType] ([Id])
+GO
+ALTER TABLE [Approval].[DepositDependentAverage] CHECK CONSTRAINT [FK_DepositDependentAverage_ContractType]
+GO
+ALTER TABLE [Approval].[DepositIndependentAverage]  WITH CHECK ADD  CONSTRAINT [FK_DepositIndependentAverage_BasicInformation] FOREIGN KEY([TypeDepositId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Approval].[DepositIndependentAverage] CHECK CONSTRAINT [FK_DepositIndependentAverage_BasicInformation]
+GO
+ALTER TABLE [Approval].[DepositIndependentAverage]  WITH CHECK ADD  CONSTRAINT [FK_DepositIndependentAverage_ContractType] FOREIGN KEY([ContractTypeId])
+REFERENCES [Core].[ContractType] ([Id])
+GO
+ALTER TABLE [Approval].[DepositIndependentAverage] CHECK CONSTRAINT [FK_DepositIndependentAverage_ContractType]
+GO
+ALTER TABLE [Approval].[PledgeCash]  WITH CHECK ADD  CONSTRAINT [FK_PledgeCash_AccountType] FOREIGN KEY([AccountTypeId])
+REFERENCES [Core].[AccountType_Old] ([Id])
+GO
+ALTER TABLE [Approval].[PledgeCash] CHECK CONSTRAINT [FK_PledgeCash_AccountType]
+GO
+ALTER TABLE [Approval].[PledgeCash]  WITH CHECK ADD  CONSTRAINT [FK_PledgeCash_ContractType] FOREIGN KEY([ContractTypeId])
+REFERENCES [Core].[ContractType] ([Id])
+GO
+ALTER TABLE [Approval].[PledgeCash] CHECK CONSTRAINT [FK_PledgeCash_ContractType]
+GO
+ALTER TABLE [Core].[ApprovalType]  WITH CHECK ADD  CONSTRAINT [FK_ApprovalType_TypeOfConnectionWithApprovals] FOREIGN KEY([TypeOfConnectionWithApprovalsId])
+REFERENCES [Core].[TypeOfConnectionWithApprovals] ([Id])
+GO
+ALTER TABLE [Core].[ApprovalType] CHECK CONSTRAINT [FK_ApprovalType_TypeOfConnectionWithApprovals]
+GO
+ALTER TABLE [Core].[ContractType]  WITH CHECK ADD  CONSTRAINT [FK_ContractType_BasicInformation] FOREIGN KEY([CurrencyGroupTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[ContractType] CHECK CONSTRAINT [FK_ContractType_BasicInformation]
+GO
+ALTER TABLE [Core].[ContractType]  WITH CHECK ADD  CONSTRAINT [FK_ContractType_BasicInformation_ContractNatureId] FOREIGN KEY([ContractNatureId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[ContractType] CHECK CONSTRAINT [FK_ContractType_BasicInformation_ContractNatureId]
+GO
+ALTER TABLE [Core].[ContractType]  WITH CHECK ADD  CONSTRAINT [FK_ContractType_BasicInformation_RefundTypeId] FOREIGN KEY([RefundTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[ContractType] CHECK CONSTRAINT [FK_ContractType_BasicInformation_RefundTypeId]
+GO
+ALTER TABLE [Core].[ContractType]  WITH CHECK ADD  CONSTRAINT [FK_ContractType_BasicInformation1] FOREIGN KEY([ContractTemplateId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[ContractType] CHECK CONSTRAINT [FK_ContractType_BasicInformation1]
+GO
+ALTER TABLE [Core].[ContractTypeConsumptionCases]  WITH CHECK ADD  CONSTRAINT [FK_ContractTypeConsumptionCases_BasicInformation] FOREIGN KEY([ConsumptionCasesId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[ContractTypeConsumptionCases] CHECK CONSTRAINT [FK_ContractTypeConsumptionCases_BasicInformation]
+GO
+ALTER TABLE [Core].[ContractTypeConsumptionCases]  WITH CHECK ADD  CONSTRAINT [FK_ContractTypeConsumptionCases_ContractType] FOREIGN KEY([ContractTypeId])
+REFERENCES [Core].[ContractType] ([Id])
+GO
+ALTER TABLE [Core].[ContractTypeConsumptionCases] CHECK CONSTRAINT [FK_ContractTypeConsumptionCases_ContractType]
+GO
+ALTER TABLE [Core].[ContractTypeContractSubType]  WITH CHECK ADD  CONSTRAINT [FK_ContractTypeContractSubType_BasicInformation] FOREIGN KEY([ContractSubTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[ContractTypeContractSubType] CHECK CONSTRAINT [FK_ContractTypeContractSubType_BasicInformation]
+GO
+ALTER TABLE [Core].[ContractTypeContractSubType]  WITH CHECK ADD  CONSTRAINT [FK_ContractTypeContractSubType_ContractType] FOREIGN KEY([ContractTypeId])
+REFERENCES [Core].[ContractType] ([Id])
+GO
+ALTER TABLE [Core].[ContractTypeContractSubType] CHECK CONSTRAINT [FK_ContractTypeContractSubType_ContractType]
+GO
+ALTER TABLE [Core].[CreditSupplyResourcesInternalSourceType]  WITH CHECK ADD  CONSTRAINT [FK_CreditSupplyResourcesInternalSourceType_CreditSupplyResourcesInternalSourceType] FOREIGN KEY([CreditSupplyResourcesTypeId])
+REFERENCES [Core].[CreditSupplyResourcesType] ([Id])
+GO
+ALTER TABLE [Core].[CreditSupplyResourcesInternalSourceType] CHECK CONSTRAINT [FK_CreditSupplyResourcesInternalSourceType_CreditSupplyResourcesInternalSourceType]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation] FOREIGN KEY([ConsumptionCasesId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation1] FOREIGN KEY([PortionTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation1]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation2] FOREIGN KEY([SubPortionTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation2]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation3] FOREIGN KEY([ContractSubTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_BasicInformation3]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_ContractType] FOREIGN KEY([ContractTypeId])
+REFERENCES [Core].[ContractType] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_ContractType]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_CreditSupplyResourcesType] FOREIGN KEY([CreditSupplyResourcesTypeId])
+REFERENCES [Core].[CreditSupplyResourcesType] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_CreditSupplyResourcesType]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_Eligible] FOREIGN KEY([EligibleId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_Eligible]
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein]  WITH CHECK ADD  CONSTRAINT [FK_DetermineFacilityMoein_FacilitySubject] FOREIGN KEY([FacilitySubjectId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[DetermineFacilityMoein] CHECK CONSTRAINT [FK_DetermineFacilityMoein_FacilitySubject]
+GO
+ALTER TABLE [Core].[FacilitySubTypeInterface]  WITH CHECK ADD  CONSTRAINT [FK_FacilitySubTypeInterface_DetermineFacilityMoein] FOREIGN KEY([DetermineFacilityMoeinId])
+REFERENCES [Core].[DetermineFacilityMoein] ([Id])
+GO
+ALTER TABLE [Core].[FacilitySubTypeInterface] CHECK CONSTRAINT [FK_FacilitySubTypeInterface_DetermineFacilityMoein]
+GO
+ALTER TABLE [Core].[InternalSourceType]  WITH CHECK ADD  CONSTRAINT [FK_InternalSourceType_CreditSupplyResourcesType] FOREIGN KEY([CreditSupplyResourcesTypeId])
+REFERENCES [Core].[CreditSupplyResourcesType] ([Id])
+GO
+ALTER TABLE [Core].[InternalSourceType] CHECK CONSTRAINT [FK_InternalSourceType_CreditSupplyResourcesType]
+GO
+ALTER TABLE [Core].[Job]  WITH CHECK ADD  CONSTRAINT [FK_Job_JobCategory] FOREIGN KEY([CategoryId])
+REFERENCES [Core].[JobCategory] ([Id])
+GO
+ALTER TABLE [Core].[Job] CHECK CONSTRAINT [FK_Job_JobCategory]
+GO
+ALTER TABLE [Core].[OrganizationTree]  WITH CHECK ADD  CONSTRAINT [FK_OrganizationTree_EstablishmentLocation] FOREIGN KEY([EstablishmentLocationId])
+REFERENCES [Core].[EstablishmentLocation] ([Id])
+GO
+ALTER TABLE [Core].[OrganizationTree] CHECK CONSTRAINT [FK_OrganizationTree_EstablishmentLocation]
+GO
+ALTER TABLE [Core].[OrganizationTreeAdditionalInformation]  WITH CHECK ADD  CONSTRAINT [FK_AdditionalInformation_Metadata] FOREIGN KEY([MetadataId])
+REFERENCES [Core].[OrganizationTreeMetadata] ([Id])
+GO
+ALTER TABLE [Core].[OrganizationTreeAdditionalInformation] CHECK CONSTRAINT [FK_AdditionalInformation_Metadata]
+GO
+ALTER TABLE [Core].[OrganizationTreeAdditionalInformation]  WITH CHECK ADD  CONSTRAINT [FK_AdditionalInformation_OrganizationTree] FOREIGN KEY([OrganizationTreeId])
+REFERENCES [Core].[OrganizationTree] ([Id])
+GO
+ALTER TABLE [Core].[OrganizationTreeAdditionalInformation] CHECK CONSTRAINT [FK_AdditionalInformation_OrganizationTree]
+GO
+ALTER TABLE [Core].[OrganizationTreeMetadata]  WITH CHECK ADD  CONSTRAINT [FK_Metadata_EstablishmentLocation] FOREIGN KEY([EstablishmentLocationId])
+REFERENCES [Core].[EstablishmentLocation] ([Id])
+GO
+ALTER TABLE [Core].[OrganizationTreeMetadata] CHECK CONSTRAINT [FK_Metadata_EstablishmentLocation]
+GO
+ALTER TABLE [Core].[PillarGroupDetail]  WITH CHECK ADD  CONSTRAINT [FK_PillarGroupDetail_PillarGroup] FOREIGN KEY([PillarGroupId])
+REFERENCES [Core].[PillarGroup] ([Id])
+GO
+ALTER TABLE [Core].[PillarGroupDetail] CHECK CONSTRAINT [FK_PillarGroupDetail_PillarGroup]
+GO
+ALTER TABLE [Core].[PillarGroupDetail]  WITH CHECK ADD  CONSTRAINT [FK_PillarGroupDetail_PillarType] FOREIGN KEY([PillarTypeId])
+REFERENCES [Core].[PillarType] ([Id])
+GO
+ALTER TABLE [Core].[PillarGroupDetail] CHECK CONSTRAINT [FK_PillarGroupDetail_PillarType]
+GO
+ALTER TABLE [Core].[PillarType]  WITH CHECK ADD  CONSTRAINT [FK_PillarType_EstablishmentLocation] FOREIGN KEY([EstablishmentLocationId])
+REFERENCES [Core].[EstablishmentLocation] ([Id])
+GO
+ALTER TABLE [Core].[PillarType] CHECK CONSTRAINT [FK_PillarType_EstablishmentLocation]
+GO
+ALTER TABLE [Core].[PillarType]  WITH CHECK ADD  CONSTRAINT [FK_PillarType_PillarType_Parent] FOREIGN KEY([ParentId])
+REFERENCES [Core].[PillarType] ([Id])
+GO
+ALTER TABLE [Core].[PillarType] CHECK CONSTRAINT [FK_PillarType_PillarType_Parent]
+GO
+ALTER TABLE [Core].[PillarTypeAmountPeriod]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypeAmountPeriod_DetermineFacilityMoein] FOREIGN KEY([DetermineFacilityMoeinId])
+REFERENCES [Core].[DetermineFacilityMoein] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypeAmountPeriod] CHECK CONSTRAINT [FK_PillarTypeAmountPeriod_DetermineFacilityMoein]
+GO
+ALTER TABLE [Core].[PillarTypeAmountPeriod]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypeAmountPeriod_PillarType] FOREIGN KEY([PillarTypeId])
+REFERENCES [Core].[PillarType] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypeAmountPeriod] CHECK CONSTRAINT [FK_PillarTypeAmountPeriod_PillarType]
+GO
+ALTER TABLE [Core].[PillarTypeHistory]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypeHistory_EstablishmentLocation] FOREIGN KEY([EstablishmentLocationId])
+REFERENCES [Core].[EstablishmentLocation] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypeHistory] CHECK CONSTRAINT [FK_PillarTypeHistory_EstablishmentLocation]
+GO
+ALTER TABLE [Core].[PillarTypeHistory]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypeHistory_PillarTypeHistory] FOREIGN KEY([PillarTypeId])
+REFERENCES [Core].[PillarType] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypeHistory] CHECK CONSTRAINT [FK_PillarTypeHistory_PillarTypeHistory]
+GO
+ALTER TABLE [Core].[PillarTypeHistory]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypeHistory_PillarTypeHistory1_Parent] FOREIGN KEY([ParentId])
+REFERENCES [Core].[PillarType] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypeHistory] CHECK CONSTRAINT [FK_PillarTypeHistory_PillarTypeHistory1_Parent]
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypePaymentPeriod_DetermineFacilityMoein] FOREIGN KEY([DetermineFacilityMoeinId])
+REFERENCES [Core].[DetermineFacilityMoein] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod] CHECK CONSTRAINT [FK_PillarTypePaymentPeriod_DetermineFacilityMoein]
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypePaymentPeriod_PillarType] FOREIGN KEY([PillarTypeId])
+REFERENCES [Core].[PillarType] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod] CHECK CONSTRAINT [FK_PillarTypePaymentPeriod_PillarType]
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod]  WITH CHECK ADD  CONSTRAINT [FK_PillarTypePaymentPeriod_PillarTypePaymentPeriod] FOREIGN KEY([PaymentTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[PillarTypePaymentPeriod] CHECK CONSTRAINT [FK_PillarTypePaymentPeriod_PillarTypePaymentPeriod]
+GO
+ALTER TABLE [Core].[PlaceOfCredit]  WITH CHECK ADD  CONSTRAINT [FK_PlaceOfCredit_PlaceOfCreditInternal] FOREIGN KEY([PlaceOfCreditInternalId])
+REFERENCES [Core].[PlaceOfCreditInternal] ([Id])
+GO
+ALTER TABLE [Core].[PlaceOfCredit] CHECK CONSTRAINT [FK_PlaceOfCredit_PlaceOfCreditInternal]
+GO
+ALTER TABLE [Core].[PledgeGroupPledgeType]  WITH CHECK ADD  CONSTRAINT [FK_PledgeGroupPledgeType_BasicInformation_PledgeGroup] FOREIGN KEY([PledgeGroupId])
+REFERENCES [Core].[PledgeGroup] ([Id])
+GO
+ALTER TABLE [Core].[PledgeGroupPledgeType] CHECK CONSTRAINT [FK_PledgeGroupPledgeType_BasicInformation_PledgeGroup]
+GO
+ALTER TABLE [Core].[PledgeGroupPledgeType]  WITH CHECK ADD  CONSTRAINT [FK_PledgeGroupPledgeType_BasicInformation_PledgeType] FOREIGN KEY([PledgeTypeId])
+REFERENCES [Core].[PledgeType] ([Id])
+GO
+ALTER TABLE [Core].[PledgeGroupPledgeType] CHECK CONSTRAINT [FK_PledgeGroupPledgeType_BasicInformation_PledgeType]
+GO
+ALTER TABLE [Core].[PledgeType]  WITH CHECK ADD  CONSTRAINT [FK_PledgeType_BasicInformation] FOREIGN KEY([HypothecationId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[PledgeType] CHECK CONSTRAINT [FK_PledgeType_BasicInformation]
+GO
+ALTER TABLE [Core].[PortionTypeSubPortionType]  WITH CHECK ADD  CONSTRAINT [FK_PortionTypeSubPortionType_BasicInformation] FOREIGN KEY([PortionTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[PortionTypeSubPortionType] CHECK CONSTRAINT [FK_PortionTypeSubPortionType_BasicInformation]
+GO
+ALTER TABLE [Core].[PortionTypeSubPortionType]  WITH CHECK ADD  CONSTRAINT [FK_PortionTypeSubPortionType_BasicInformation1] FOREIGN KEY([SubPortionTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[PortionTypeSubPortionType] CHECK CONSTRAINT [FK_PortionTypeSubPortionType_BasicInformation1]
+GO
+ALTER TABLE [Core].[SpecialCustomer]  WITH CHECK ADD  CONSTRAINT [FK_SpecialCustomer_BasicInformation] FOREIGN KEY([CustomerTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[SpecialCustomer] CHECK CONSTRAINT [FK_SpecialCustomer_BasicInformation]
+GO
+ALTER TABLE [Core].[SpecialCustomer]  WITH CHECK ADD  CONSTRAINT [FK_SpecialCustomer_BasicInformation1] FOREIGN KEY([ApplicantOwnershipTypeId])
+REFERENCES [Core].[BasicInformation] ([Id])
+GO
+ALTER TABLE [Core].[SpecialCustomer] CHECK CONSTRAINT [FK_SpecialCustomer_BasicInformation1]
+GO
+ALTER TABLE [dbo].[Agreement]  WITH CHECK ADD  CONSTRAINT [FK_Agreement_Agreement] FOREIGN KEY([SourceAgreementId])
+REFERENCES [dbo].[Agreement] ([Id])
+GO
+ALTER TABLE [dbo].[Agreement] CHECK CONSTRAINT [FK_Agreement_Agreement]
+GO
+ALTER TABLE [dbo].[Core.PledgeCoveragePercentage]  WITH CHECK ADD  CONSTRAINT [FK_Core.PledgeCoveragePercentage_AccountType] FOREIGN KEY([AccountTypeId])
+REFERENCES [Core].[AccountType_Old] ([Id])
+GO
+ALTER TABLE [dbo].[Core.PledgeCoveragePercentage] CHECK CONSTRAINT [FK_Core.PledgeCoveragePercentage_AccountType]
+GO
+ALTER TABLE [dbo].[Core.PledgeCoveragePercentage]  WITH CHECK ADD  CONSTRAINT [FK_Core.PledgeCoveragePercentage_DetermineFacilityMoein] FOREIGN KEY([DetermineFacilityId])
+REFERENCES [Core].[DetermineFacilityMoein] ([Id])
+GO
+ALTER TABLE [dbo].[Core.PledgeCoveragePercentage] CHECK CONSTRAINT [FK_Core.PledgeCoveragePercentage_DetermineFacilityMoein]
+GO
+ALTER TABLE [dbo].[Core.PledgeCoveragePercentage]  WITH CHECK ADD  CONSTRAINT [FK_Core.PledgeCoveragePercentage_PledgeType] FOREIGN KEY([PledgeTypeId])
+REFERENCES [Core].[PledgeType] ([Id])
+GO
+ALTER TABLE [dbo].[Core.PledgeCoveragePercentage] CHECK CONSTRAINT [FK_Core.PledgeCoveragePercentage_PledgeType]
+GO
+ALTER TABLE [LimAuth].[CreditPackage]  WITH CHECK ADD  CONSTRAINT [FK_CreditPackage_ReasonType] FOREIGN KEY([ReasonTypeId])
+REFERENCES [LimAuth].[ReasonType] ([Id])
+GO
+ALTER TABLE [LimAuth].[CreditPackage] CHECK CONSTRAINT [FK_CreditPackage_ReasonType]
+GO
+ALTER TABLE [Payment].[Account]  WITH CHECK ADD  CONSTRAINT [FK_Account_Customer] FOREIGN KEY([CustomerId])
+REFERENCES [Payment].[Customer] ([Id])
+GO
+ALTER TABLE [Payment].[Account] CHECK CONSTRAINT [FK_Account_Customer]
+GO
+ALTER TABLE [Payment].[Account]  WITH CHECK ADD  CONSTRAINT [FK_Account_Proclamation] FOREIGN KEY([ProclamationId])
+REFERENCES [Payment].[Proclamation] ([Id])
+GO
+ALTER TABLE [Payment].[Account] CHECK CONSTRAINT [FK_Account_Proclamation]
+GO
+ALTER TABLE [Payment].[Agreement]  WITH CHECK ADD  CONSTRAINT [FK__Agreement__Proclamation__40BA7AC1] FOREIGN KEY([ProclamationId])
+REFERENCES [Payment].[Proclamation] ([Id])
+GO
+ALTER TABLE [Payment].[Agreement] CHECK CONSTRAINT [FK__Agreement__Proclamation__40BA7AC1]
+GO
+ALTER TABLE [Payment].[Agreement]  WITH CHECK ADD  CONSTRAINT [FK_Agreement_Agreement] FOREIGN KEY([SourceAgreementId])
+REFERENCES [Payment].[Agreement] ([Id])
+GO
+ALTER TABLE [Payment].[Agreement] CHECK CONSTRAINT [FK_Agreement_Agreement]
+GO
+ALTER TABLE [Payment].[Agreement]  WITH CHECK ADD  CONSTRAINT [FK_Agreement_Customer] FOREIGN KEY([CustomerId])
+REFERENCES [Payment].[Customer] ([Id])
+GO
+ALTER TABLE [Payment].[Agreement] CHECK CONSTRAINT [FK_Agreement_Customer]
+GO
+ALTER TABLE [Payment].[ApprovedPledge]  WITH CHECK ADD  CONSTRAINT [FK_ApprovedPledge_Proclamation] FOREIGN KEY([ProclamationId])
+REFERENCES [Payment].[Proclamation] ([Id])
+GO
+ALTER TABLE [Payment].[ApprovedPledge] CHECK CONSTRAINT [FK_ApprovedPledge_Proclamation]
+GO
+ALTER TABLE [Payment].[Comment]  WITH CHECK ADD  CONSTRAINT [FK_Comment_Agreement] FOREIGN KEY([AgreementId])
+REFERENCES [Payment].[Agreement] ([Id])
+GO
+ALTER TABLE [Payment].[Comment] CHECK CONSTRAINT [FK_Comment_Agreement]
+GO
+ALTER TABLE [Payment].[Comment]  WITH CHECK ADD  CONSTRAINT [FK_Comment_Proclamation] FOREIGN KEY([ProclamationId])
+REFERENCES [Payment].[Proclamation] ([Id])
+GO
+ALTER TABLE [Payment].[Comment] CHECK CONSTRAINT [FK_Comment_Proclamation]
+GO
+ALTER TABLE [Payment].[Guarantee]  WITH CHECK ADD  CONSTRAINT [FK__Guarantee__Custo__2F8FEEBF] FOREIGN KEY([CustomerId])
+REFERENCES [Payment].[Customer] ([Id])
+GO
+ALTER TABLE [Payment].[Guarantee] CHECK CONSTRAINT [FK__Guarantee__Custo__2F8FEEBF]
+GO
+ALTER TABLE [Payment].[Proclamation]  WITH CHECK ADD  CONSTRAINT [FK__PaymentPe__Custo__41AE9EFA] FOREIGN KEY([CustomerId])
+REFERENCES [Payment].[Customer] ([Id])
+GO
+ALTER TABLE [Payment].[Proclamation] CHECK CONSTRAINT [FK__PaymentPe__Custo__41AE9EFA]
+GO
+ALTER TABLE [Payment].[RelatedRoles]  WITH CHECK ADD  CONSTRAINT [FK_RelatedRoles_Customer] FOREIGN KEY([CustomerID])
+REFERENCES [Payment].[Customer] ([Id])
+GO
+ALTER TABLE [Payment].[RelatedRoles] CHECK CONSTRAINT [FK_RelatedRoles_Customer]
+GO
+ALTER TABLE [Payment].[RelatedRoles]  WITH CHECK ADD  CONSTRAINT [FK_RelatedRoles_RoleInfo] FOREIGN KEY([RelatedEntityId])
+REFERENCES [Payment].[Customer] ([Id])
+GO
+ALTER TABLE [Payment].[RelatedRoles] CHECK CONSTRAINT [FK_RelatedRoles_RoleInfo]
+GO
